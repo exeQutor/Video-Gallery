@@ -25,15 +25,15 @@ class Burgosoft_Video_Gallery
 	
 	function actions()
 	{
-		add_action('init', [$this, 'init']);
-		add_action('wp_enqueue_scripts', [$this, 'wp_enqueue_scripts']);
-		add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_scripts']);
+		add_action('init', array($this, 'init'));
+		add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));
+		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
 	}
 	
 	function init()
 	{
-		register_post_type('bs-video-gallery', [
-				'labels' => [
+		register_post_type('bs-video-gallery', array(
+				'labels' => array(
 					'name' => 'Video Galleries',
 					'singular_name' => 'Video Gallery',
 					'add_new_item' => 'Add New Video Gallery',
@@ -47,35 +47,36 @@ class Burgosoft_Video_Gallery
 					'archives' => 'Video Gallery Archives',
 					'insert_into_item' => 'Insert into video gallery',
 					'uploaded_to_this_item' => 'Uploaded to this video gallery'
-				],
-				'public' => true,
+				),
+				'public' => false,
+				'show_ui' => true,
 				'menu_icon' => 'dashicons-video-alt3',
-				'supports' => [
+				'supports' => array(
 					'title',
 					'editor' => false
-				]
-			]
+				)
+			)
 		);
 	}
 	
 	function wp_enqueue_scripts()
 	{
-		wp_enqueue_style('lity', $this->plugin_url . 'assets/vendor/lity/lity.min.css', [], '1.6.4');
-		wp_enqueue_style('animate', $this->plugin_url . 'assets/css/animate.css', [], '3.5.1');
-		wp_enqueue_style('styles', $this->plugin_url . 'assets/css/styles.css', [], time());
+		wp_enqueue_style('lity', $this->plugin_url . 'assets/vendor/lity/lity.min.css', array(), '1.6.4');
+		wp_enqueue_style('animate', $this->plugin_url . 'assets/css/animate.css', array(), '3.5.1');
+		wp_enqueue_style('styles', $this->plugin_url . 'assets/css/styles.css', array(), time());
 		
-		wp_enqueue_script('lity', $this->plugin_url . 'assets/vendor/lity/lity.min.js', ['jquery'], '1.6.4', true);
-		wp_enqueue_script('scripts', $this->plugin_url . 'assets/js/scripts.js', ['jquery'], time(), true);
+		wp_enqueue_script('lity', $this->plugin_url . 'assets/vendor/lity/lity.min.js', array('jquery'), '1.6.4', true);
+		wp_enqueue_script('scripts', $this->plugin_url . 'assets/js/scripts.js', array('jquery'), time(), true);
 	}
 	
 	function admin_enqueue_scripts()
 	{
-		wp_enqueue_style('admin-styles', $this->plugin_url . 'assets/css/admin.css', [], time());
+		wp_enqueue_style('admin-styles', $this->plugin_url . 'assets/css/admin.css', array(), time());
 	}
 	
 	function shortcodes()
 	{
-		add_shortcode('bsvg', [$this, 'bsvg_shortcode']);
+		add_shortcode('bsvg', array($this, 'bsvg_shortcode'));
 	}
 	
 	function bsvg_shortcode($atts)
@@ -128,12 +129,12 @@ class Burgosoft_Video_Gallery
 	
 	function acf()
 	{
-		add_filter('acf/settings/path', [$this, 'acf_settings_path']);
-		add_filter('acf/settings/dir', [$this, 'acf_settings_dir']);
+		add_filter('acf/settings/path', array($this, 'acf_settings_path'));
+		add_filter('acf/settings/dir', array($this, 'acf_settings_dir'));
 		add_filter('acf/settings/show_admin', '__return_false');
 		
-		include_once( $this->plugin_dir . 'includes/acf/acf.php' );
-		include_once( $this->plugin_dir . 'includes/acf-local-fields.php' );
+		include_once($this->plugin_dir . 'includes/acf/acf.php');
+		include_once($this->plugin_dir . 'includes/acf-local-fields.php');
 	}
 	
 	function acf_settings_path($path)
