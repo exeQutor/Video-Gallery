@@ -1,0 +1,55 @@
+ul.bsvg-list {
+	list-style: none;
+}
+ul.bsvg-list > li {
+    display: inline-block;
+    padding: 10px;
+}
+ul.bsvg-list > li img.faded {
+	opacity: .75;
+}
+ul.bsvg-list > li .icon-overlay { 
+  position: relative;
+  background: black;
+}
+ul.bsvg-list > li .icon-overlay:hover:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../img/play-icon.png) no-repeat center center;
+  background-size: 200px;
+  opacity: .5;
+}
+ul.bsvg-list > li .icon-overlay:hover > img.faded {
+	opacity: 1;
+}
+
+ul.bsvg-list > li > a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+}
+ul.bsvg-list .title-overlay {
+	display: none;
+    position: absolute;
+    background-color: rgba(0,0,0,0.75);
+    color: white;
+    bottom: 0;
+    padding: 10px;
+    width: 100%;
+}
+ul.bsvg-list .title-overlay h3 {
+	font-size: 1em;
+	margin: 0;
+}
+ul.bsvg-list .title-overlay p {
+	font-size: 12px;
+	margin: 0;
+}
+
+.lity-iframe-container {
+	overflow: hidden;
+}
