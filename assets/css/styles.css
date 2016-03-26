@@ -1,5 +1,6 @@
 ul.bsvg-list {
 	list-style: none;
+	margin: 0;
 }
 ul.bsvg-list > li {
     display: inline-block;
@@ -52,4 +53,18 @@ ul.bsvg-list .title-overlay p {
 
 .lity-iframe-container {
 	overflow: hidden;
+}
+
+/* media queries */
+
+@media screen and (max-width: 768px) {
+	ul.bsvg-list > li {
+	    width: 50% !important;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	ul.bsvg-list > li {
+	    width: 100% !important;
+	}
 }
