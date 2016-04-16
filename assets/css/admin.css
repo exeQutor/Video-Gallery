@@ -1,3 +1,8 @@
 .acf-postbox.seamless > .acf-fields > .acf-field {
 	margin: 0 0 20px !important;
 }
+
+#bsvg_media_button .dashicons {
+    margin-top: 3px;
+    color: red;
+}

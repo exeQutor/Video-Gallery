@@ -28,6 +28,8 @@ class Burgosoft_Video_Gallery
 		add_action('init', array($this, 'init'));
 		add_action('wp_enqueue_scripts', array($this, 'wp_enqueue_scripts'));
 		add_action('admin_enqueue_scripts', array($this, 'admin_enqueue_scripts'));
+		add_action('media_buttons', array($this, 'media_buttons'), 20);
+		add_action('admin_footer',  array($this, 'admin_footer'));
 	}
 	
 	function init()
@@ -72,6 +74,22 @@ class Burgosoft_Video_Gallery
 	function admin_enqueue_scripts()
 	{
 		wp_enqueue_style('admin-styles', $this->plugin_url . 'assets/css/admin.css', array(), time());
+		wp_enqueue_script('admin-scripts', $this->plugin_url . 'assets/js/admin.js', array('jquery'), time(), true);
+	}
+	
+	function media_buttons()
+	{
+		include_once($this->plugin . 'content/media_buttons.php');
+	}
+	
+	function admin_footer()
+	{
+		$video_galleries = get_posts(array(
+			'post_type' => 'bs-video-gallery',
+			'posts_per_page' => -1
+			));
+		
+		include_once($this->plugin . 'content/admin_footer.php');
 	}
 	
 	function shortcodes()
