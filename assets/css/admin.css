@@ -2,6 +2,10 @@
 	margin: 0 0 20px !important;
 }
 
+#bsvg_media_button {
+	margin-left: 10px;
+}
+
 #bsvg_media_button .dashicons {
     margin-top: 3px;
     color: red;

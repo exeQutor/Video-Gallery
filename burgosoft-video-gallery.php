@@ -79,7 +79,7 @@ class Burgosoft_Video_Gallery
 	
 	function media_buttons()
 	{
-		include_once($this->plugin . 'content/media_buttons.php');
+		echo '<a href="#TB_inline?width=480&height=550&inlineId=bsvg_thickbox" class="thickbox button" id="bsvg_media_button" title="Video Gallery"><span class="dashicons dashicons-playlist-video"></span> Video Gallery</a>';
 	}
 	
 	function admin_footer()
